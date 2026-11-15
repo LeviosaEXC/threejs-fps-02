@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 
 export const PALETTE = {
-  sky: '#20242e',
+  sky: '#2e3442',
   asphalt: '#26292f',
   concrete: '#3b4046',
   steel: '#4a545e',
@@ -28,8 +28,8 @@ export function material(name, extra = {}) {
   let mat = cache.get(key);
   if (mat) return mat;
   const base = {
-    asphalt: { color: 0x26292f, roughness: 0.96, metalness: 0.0 },
-    concrete: { color: 0x3b4046, roughness: 0.94, metalness: 0.02 },
+    asphalt: { color: 0x33373e, roughness: 0.96, metalness: 0.0 },
+    concrete: { color: 0x4a5058, roughness: 0.94, metalness: 0.02 },
     steel: { color: 0x4a545e, roughness: 0.55, metalness: 0.55 },
     rust: { color: 0xa4552f, roughness: 0.85, metalness: 0.15 },
     teal: { color: 0x2f6f6a, roughness: 0.8, metalness: 0.2 },

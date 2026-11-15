@@ -169,7 +169,7 @@ export function createWorld(scene) {
   scene.add(skyline);
 
   // Light: low dusk sun from the west, cool sky fill.
-  const sky = new THREE.HemisphereLight(0x3a4a6b, 0x1c1712, 1.4);
+  const sky = new THREE.HemisphereLight(0x4a5a7d, 0x2a2320, 1.9);
   scene.add(sky);
   const sun = new THREE.DirectionalLight(0xffb36b, 2.8);
   sun.position.set(-26, 16, 8);
@@ -183,7 +183,7 @@ export function createWorld(scene) {
   sun.shadow.camera.far = 80;
   sun.shadow.bias = -0.0006;
   scene.add(sun, sun.target);
-  const fill = new THREE.DirectionalLight(0x5a6a8a, 0.5);
+  const fill = new THREE.DirectionalLight(0x5a6a8a, 0.8);
   fill.position.set(18, 12, 14);
   scene.add(fill);
 
