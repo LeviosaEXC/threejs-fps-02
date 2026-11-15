@@ -1,8 +1,7 @@
 // A tiny static server for game/ (Node 22, standard library only), so the
 // entry can be played locally without a build step: `node serve.ts` serves
-// game/ on http://localhost:8080. It sends the MIME types a browser game
-// needs, refuses any path outside game/, and does nothing else: a development
-// convenience, not a web server for the internet.
+// game/ on http://localhost:8080 (or --port <n>). It sends the MIME types a
+// browser game needs and refuses any path outside game/.
 import { createReadStream, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
@@ -23,7 +22,7 @@ const MIME = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
-  '.wav': 'audio/wav',
+  '.svg': 'image/svg+xml',
 };
 
 createServer((request, response) => {
@@ -43,9 +42,9 @@ createServer((request, response) => {
   }
   let size;
   try {
-    const info = statSync(file);
-    if (!info.isFile()) throw new Error('not a file');
-    size = info.size;
+    const stats = statSync(file);
+    if (!stats.isFile()) throw new Error('not a file');
+    size = stats.size;
   } catch {
     response.writeHead(404).end('not found');
     return;
